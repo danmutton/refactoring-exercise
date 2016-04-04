@@ -2,12 +2,12 @@
 
 class DatabaseService {
 
-    function startConnection() {
+    startConnection() {
 
-    };
+    }
 
-    function save(tableName, values) {
+    save(tableName, values) {
 
-    };
+    }
 }
 export default DatabaseService;
