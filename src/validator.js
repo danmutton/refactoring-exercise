@@ -3,7 +3,7 @@
     Returns true if valid, false otherwise.
 */
 function customerHasValidFirstName (cust) {
-    return typeof cust === 'string' && cust !== '' && cust.length < 500;
+    return typeof cust === 'string' && cust !== '' && cust.length < 501;
 }
 
 /*
@@ -11,7 +11,7 @@ function customerHasValidFirstName (cust) {
     Returns true if valid, false otherwise.
 */
 function customerHasValidLastName (cust) {
-    return typeof cust === 'string' && cust !== '' && cust.length < 500;
+    return typeof cust === 'string' && cust !== '' && cust.length < 501;
 }
 
 /*
@@ -19,14 +19,14 @@ function customerHasValidLastName (cust) {
     Returns true if valid, false otherwise.
 */
 function customerNickNameIsBetweenThreeAndTenCharacters(test) {
-    return typeof test === 'string'  && /^\w{3,10}$/.match(test);
+    return typeof test === 'string'  && test.match(/^\w{3,10}$/) !== null;
 }
 
 /*
     Checks that the password provided is valid.
 */
 function ValidPass(p) {
-    return typeof p === 'string' && /^\.{10,50}$/.match(p);
+    return typeof p === 'string' && p.match(/^.{10,50}$/) !== null;
 }
 
 /*
@@ -35,7 +35,7 @@ function ValidPass(p) {
 function isValidDOB(dob) {
     var d = new Date(dob);
     if (!isNaN(d)) {
-        if(d.getYear() < 2016 && d.getYear() > 1900) {
+        if(d.getFullYear() < 2016 && d.getFullYear() > 1900) {
             return true;
         }
     }
@@ -46,7 +46,7 @@ function isValidDOB(dob) {
     Returns true if the date the customer selected is valid.
 */
 function isValidSelectedDate(date) {
-    var d = new Date(dob);
+    var d = new Date(date);
     var checkD = new Date();
     if (!isNaN(d)) {
         if(d > checkD) {
@@ -60,11 +60,11 @@ function isValidSelectedDate(date) {
     Checks if the country is a valid string
 */
 function validCountryProvided(c) {
-    return typeof c === 'string' && c.length < 500;
+    return typeof c === 'string' && c.length < 501;
 }
 
 function validCustomerCity(c) {
-    return typeof c === 'string' && c.length < 500
+    return typeof c === 'string' && c.length < 501;
 }
 
 /*
@@ -77,7 +77,7 @@ function customerValidEmail(emailString) {
     }
     else {
         return typeof emailString === 'string' &&
-        /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.([a-z]){0,3})$/.match(emailString);
+        emailString.match(/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.([a-z]){0,3})$/) !== null;
     }
 }
 
@@ -91,7 +91,7 @@ function customerValidPhoneNumber(phoneString) {
     }
     else {
         return typeof phoneString === 'string' &&
-        /^[0-9\- ]+$/.match(phoneString);
+        phoneString.match(/^[0-9\- ]+$/) !== null;
     }
 }
 
@@ -133,5 +133,15 @@ function validateMemberDetails(fName, lName, nName, pass, dob, selectedDate, cou
 
 
 export default  {
-    validateMemberDetails: validateMemberDetails
+    validateMemberDetails: validateMemberDetails,
+    customerHasValidFirstName: customerHasValidFirstName,
+    customerHasValidLastName: customerHasValidLastName,
+    customerNickNameIsBetweenThreeAndTenCharacters: customerNickNameIsBetweenThreeAndTenCharacters,
+    validPass: ValidPass,
+    isValidDOB: isValidDOB,
+    isValidSelectedDate: isValidSelectedDate,
+    validCountryProvided: validCountryProvided,
+    validCustomerCity: validCustomerCity,
+    customerValidEmail: customerValidEmail,
+    customerValidPhoneNumber: customerValidPhoneNumber
 };
