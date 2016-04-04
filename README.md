@@ -44,7 +44,7 @@ The above lists are quite specific, but in general there are two principles:
 * **When I *read* this code, is it hard to follow?**
 * **When I *edit* this code, is it hard to change?**
 
-### How to refactor in the context of a project?
+### 5. How to refactor in the context of a project?
 * It should be part of day-to-day work. Remember Red, Green, **Refactor**
 * When writing new code, refactor it as you go
 * If you have a codebase with lots of tech debt, do it incrementally
