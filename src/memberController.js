@@ -9,7 +9,7 @@ class MemberController {
     constructor() {
         this.memberAlertService = new MemberAlertService();
         this.databaseService = new DatabaseService();
-        this.validator = new Validator();
+        this.validator = Validator;
     }
 
     submitMember(form) {
@@ -25,7 +25,6 @@ class MemberController {
             // Prepare the error message for the user
             var message = 'There were errors on the form:\n' +
                 errors.concat(', ');
-
             //Get the alert service to tell the user of the problem
             this.memberAlertService.clearCurrentMessage();
             this.memberAlertService.errorMessage = message;
